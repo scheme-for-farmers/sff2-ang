@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FARMARKET</title>
+    <link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet">
+    
+</head>
+<body>
+<app-admin-header></app-admin-header>
+      
+      
+      <div class="row" style="display: flex;justify-content: center;">
+        <div class="main" style="display: flex;justify-content: center;">
+          <div class="card" style="width: 100%;">
+ 
+      <h2 style="display: flex;justify-content: center;">Add a crop</h2>
+     
+                <form id="addCrop" #myForm="ngForm" (ngSubmit)="add();">
+                
+                    <div class="container" >
+                      <label><b>CropType</b></label><br>
+                      <input type="text" placeholder="CropType" name="cropType" 
+                      [(ngModel)]=crop.cropType                      
+                      required ><br>
+                      <label><b>CropName</b></label><br>
+                      <input type="text" placeholder="CropName" name="cropName" 
+                      [(ngModel)]=crop.cropName  required><br>
+                      <label><b>BasePrice</b></label><br>
+                      <input type="text" placeholder="BasePrice" name="basePrice" 
+                      [(ngModel)]=crop.basePrice required><br>
+                      <button [disabled]="!myForm.valid" type="submit">ADD</button>
+                     
+
+                    </div>
+                </form>
+                <div style="display: flex;justify-content: center;">
+                  <h2 style="text-align: center;color: rgb(165, 255, 130);"> {{msg}}</h2> 
+                  <h2 style="text-align: center;color: rgb(228, 46, 13);"> {{msg1}}</h2> 
+              </div>
+                <br>
+                <div *ngIf="showTable">
+            <h2 style="display: flex;justify-content: center;">Update a crop</h2><br>
+            <form #myForm2="ngForm">
+            
+                <div class="container" style="display: flex;justify-content: center;width: 100%;">
+                
+                  <table style="width: 100%;">
+                    
+                        <tr >
+                          <th>Crop Id</th>
+                          <th>Crop Type </th>
+                          <th>Crop Name </th>
+                          <th>Base Price </th>
+                           <th>Update</th>
+                           <!-- <th>Delete</th> -->
+                        </tr>
+                     <tr *ngFor="let crop of crops;">
+                        <td >{{crop.cropId}}</td>
+
+                         <td >{{crop.cropType}}</td>
+                          
+                         <td > {{crop.cropName}}</td>
+                        
+                         <td>
+                          {{crop.basePrice}} 
+                          <input type="text" #price placeholder="Base Price" name="basePrice"  ngModel required style="height: 50px;text-align: center;font-size: 20px;"></td>
+                         <td style="padding: 20px;"><button type="button" [disabled]="!myForm2.valid" (click)=update(crop,price.value) style="font-size: 20px;border-radius: 30px;max-width: 150px;" >Update</button></td>
+                         <!-- <td style="padding: 20px;"><button type="button" (click)=delete(crop) style="font-size: 20px;border-radius: 30px;max-width: 150px;" >Delete</button></td> -->
+                     </tr>
+                   
+                      </table>
+                    
+                   <br><br>
+                  </div>
+               
+            </form>
+          </div>
+        </div>
+        </div>
+     </div>      
+     <app-footer></app-footer>
+</body>
+
+
+
+</html>

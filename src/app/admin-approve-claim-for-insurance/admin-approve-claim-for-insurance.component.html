@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FARMARKET</title>
+    <link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet">
+    </head>
+<body>
+    <app-admin-header></app-admin-header>  
+
+      <div class="row">
+        <div class="main"  style="display: flex;justify-content: center;">
+          <div class="card" style="width:100%">
+            <h1 style="display: flex;justify-content: center;color: white">Approve Claim for Insurance</h1>
+                <form>
+                    <div *ngIf=showTable class="container"style="display: flex;justify-content: center;">
+                        <table style="width:80%">
+                      
+                            <tr>
+                              <th >PolicyNumber</th>
+                              <th >Farmer Email</th>
+                              <th >Request Id</th>
+                              <th >CropName</th>
+                              <th >Cause of Damage</th>
+                              <th style="min-width: 210px">Date of Loss</th>
+                              <th >Approve</th>
+                              <th >Disapprove</th>
+                            </tr>
+                            <tr *ngFor="let i of list">
+                              <td>{{i.policyNo}}</td>
+                              <td>{{i.sellRequest.farmer.farmerEmail}}</td>
+                              <td>{{i.sellRequest.requestId}}</td>
+                              <td>{{i.sellRequest.crop.cropName}}</td>
+                              <td>{{i.causeOfClaim}}</td>
+                              <td>{{i.dateOfLoss}}</td>
+                              <td style="padding: 20px;"><button type="button" (click)=approveClaim(i.policyNo)  style="font-size: 20px;border-radius: 30px;max-width: 150px;" >Approve</button></td>
+                              <td style="padding: 20px;"><button type="button" (click)=rejectClaim(i.policyNo)  style="font-size: 20px;border-radius: 30px;max-width: 150px;" >Disapprove</button></td>
+                              
+                            </tr>
+                          </table><br><br>
+ 
+                    </div>
+                    <div *ngIf="!showTable" style="display: flex;justify-content: center;color:rgb(165, 255, 130);">
+                            <h1>{{msg}}</h1>
+                    </div>
+                </form>
+                <br><br><br> 
+             
+          </div>
+        </div>
+     </div>
+     <div *ngIf="loaderc">
+      <div class="loader-wrapper">
+        <div class="loader"></div>
+      </div>
+    </div>
+     <app-footer></app-footer>    
+</body>
+</html>

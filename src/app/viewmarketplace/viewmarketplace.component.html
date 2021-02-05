@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+  <title>FARMARKET</title>
+  <link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet">
+ 
+</head>
+ 
+<body>
+ 
+  <app-farmer-header></app-farmer-header>
+
+
+ 
+ 
+  <div class="row" style="display: flex;justify-content: center;">
+    <div class="main" style="display: flex;justify-content: center;">
+      <div class="card" style="width: 100%;">
+        <h1 style="text-align: center;">Marketplace</h1>
+        <!--<form onsubmit="validate();">-->
+        <form>
+          <div *ngIf=!showTable style="display: flex;justify-content: center;color: rgb(165, 255, 130);"><h2>{{msg1}}</h2></div>
+          <div *ngIf=showTable1 >
+          <div class="container" style="width: 100%;display: flex;justify-content: center;">
+  
+            <table style="width:70%">
+              <tr>
+                <th>CropName</th>
+                <th>CropType</th>
+                <th>ViewMarketPlace</th>
+              </tr>
+              <tr *ngFor="let crop of crops;">
+                <td>{{crop.cropName}}</td>
+                <td>{{crop.cropType}}</td>
+                <td><button type="button" (click)=viewMarketPlace(crop) style="max-width: 30%;font-size: 20px;border-radius: 30px;">View</button></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+            <div *ngIf=!showTable style="display: flex;justify-content: center;color: rgb(165, 255, 130);"><h2>{{msg}}</h2></div>  
+            <div *ngIf=showTable class="container" style="display: flex;justify-content: center;width: 100%;">
+             
+            <table >
+              <tr >
+                <th style="min-width: 160px;">CropName</th>
+                <th style="min-width: 160px;">CropType</th>
+                <th style="min-width: 160px;">Base Price</th>
+                <th style="min-width: 300px;">Current Bid Amount</th>
+                <th style="min-width: 220px;">Previous Bids</th>
+              </tr>
+              
+              <tr>
+                <td>{{marketplace.cropName}}</td>
+                <td>{{marketplace.cropType}}</td>
+                  <td >{{marketplace.basePrice}}</td>
+                  <td>{{marketplace.currentBidAmount}}</td>
+                  <td>
+                    <tr *ngFor="let p of marketplace.previousBids;">
+                      <td style="min-width: 220px;">{{p}}</td>
+                    </tr>
+                  </td>
+              </tr>
+            </table>
+            <!-- </div> -->
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+
+ 
+</html>

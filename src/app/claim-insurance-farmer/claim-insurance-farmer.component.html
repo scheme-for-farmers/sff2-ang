@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>FARMARKET</title>
+  <link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+  <app-farmer-header></app-farmer-header>
+
+
+
+  <div class="row">
+    <div class="main" style="display: flex;justify-content: center;">
+      <div class="card" style="width: 100%;">
+        <h1 style="text-align: center;">Particulars of Insuree </h1>
+        <!--<form onsubmit="validate();">-->
+        <h2 style="color:rgb(165, 255, 130);">{{msg}}</h2>
+        <form id="claim" #myForm="ngForm">
+          <div class="container">
+            <label for="nname"><b>Name of Insuree </b></label>
+            <input type="text" placeholder="Name of Insuree" name="nname" #name1="ngModel" pattern="[^\s]+[-a-zA-Z\s]+([-a-zA-Z]+)*" [(ngModel)]=name required>
+            <div style="color:rgb(255, 130, 130);" *ngIf="name1.invalid && (name1.dirty||name1.touched)">
+              <div *ngIf="name1.errors?.required">
+                <h2>Please enter your name</h2>
+              </div>
+              <div *ngIf="name1.errors?.pattern">
+                <h2>Only alphabets allowed</h2>
+              </div><br>
+            </div>
+            
+            <label for="pno"><b>Policy No </b></label><br>
+            <input type="number" placeholder="Policy No " #policyno="ngModel" [(ngModel)]=pno name="pno" required><br>
+            <div style="color:rgb(255, 130, 130);" *ngIf="policyno.invalid && (policyno.dirty||policyno.touched)">
+              <div *ngIf="policyno.errors?.required">
+                <h2>policy No. is required</h2>
+              </div>
+              <div *ngIf="policyno.errors?.pattern">
+                <h2>Only numbers allowed</h2>
+              </div><br>
+            </div>
+
+            <h2 style="text-align: center;">Details of Cause for Loss</h2>
+            
+            <label for="date"><b>Date of Loss</b></label><br>
+            <input type="date" #date="ngModel" [(ngModel)]=dateLoss  placeholder="Date of Loss" name="date1" style="width:250px;font-size: 25px;" required ><br>
+            <div style="color:rgb(255, 130, 130);" *ngIf="date.invalid && (date.dirty||date.touched)">
+              <div *ngIf="date.errors?.required">
+                <h2>Date is required</h2>
+              </div><br>
+            </div>
+        <br>
+            <label for="closs"><b>Cause of Loss</b></label>
+            <input type="text" #cause1="ngModel" [(ngModel)]=cause placeholder="Cause of Loss" name="closs" pattern="[^\s]+[-a-zA-Z\s]+([-a-zA-Z]+)*" required>
+            <div style="color:rgb(255, 130, 130);" *ngIf="cause1.invalid && (cause1.dirty||cause1.touched)">
+              <div *ngIf="cause1.errors?.required">
+                <h2>cause of damage is required</h2>
+              </div>
+              <div *ngIf="cause1.errors?.pattern">
+                <h2>Only alphabets allowed</h2>
+              </div><br>
+            </div>
+
+
+            <button type="submit" [disabled]="!myForm.valid" (click)=claimInsurance(policyno.value,date.value,cause1.value)>Submit</button>
+            
+      
+          </div> 
+        </form>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="loaderc">
+    <div class="loader-wrapper">
+      <div class="loader"></div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</body>
+
+
+</html>

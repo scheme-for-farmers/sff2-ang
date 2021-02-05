@@ -1,0 +1,296 @@
+<head>
+  <title>LTI - Larsen & Toubro Infotech</title>
+  <link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+  <app-header></app-header>
+
+  <div class="row">
+    <div class="main">
+      <div class="card">
+        <br>
+        <h1 style="text-align: center;font-family: cursive;">Farmer Registration Form</h1><br>
+
+        <h1 style="text-align: center;color: rgb(165, 255, 130)"> {{message}}</h1>
+
+        <form id="farmer" #myForm="ngForm" (ngSubmit)="registerFarmer()" enctype="multipart/form-data">
+          <!-- {{myForm.value|json}} -->
+          <div class="container">
+            <label><b>Full Name</b></label>
+            <input type="text" placeholder="Enter Full Name" name="farmerName" #farmerName="ngModel"
+            pattern="[^\s]+[-a-zA-Z\s]+([-a-zA-Z]+)*" [(ngModel)]=farmer.farmerName required />
+            <div style="color:rgb(255, 130, 130);" *ngIf="farmerName.invalid && (farmerName.dirty||farmerName.touched)">
+              <div *ngIf="farmerName.errors?.required">
+                <h2>Please enter your name</h2>
+              </div>
+              <div *ngIf="farmerName.errors?.pattern">
+                <h2>Only alphabets allowed</h2>
+              </div><br>
+            </div>
+
+
+            <label for="farmerContactNo"><b>Contact No.</b></label>
+            <input type="tel" placeholder="Enter Contact Number" name="farmerContactNo" pattern="[0-9]{10}"
+              #farmerContactNo1="ngModel" [(ngModel)]=farmer.farmerContactNo required />
+            <div style="color:rgb(255, 130, 130);"
+              *ngIf="farmerContactNo1.invalid && (farmerContactNo1.dirty||farmerContactNo1.touched)">
+              <div *ngIf="farmerContactNo1.errors?.required">
+                <h2>Phone number cannot be empty</h2>
+              </div>
+              <div *ngIf="farmerContactNo1.errors?.pattern">
+                <h2>enter a 10 digit number</h2>
+              </div>
+            </div>
+            <!-- <span id="mbError" style="color: red"></span> -->
+
+            <label for="farmerEmail"><b>Email Address</b></label>
+            <input type="email" placeholder="Enter Email Address" name="farmerEmail" #farmerEmail1="ngModel"
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" [(ngModel)]=farmer.farmerEmail required />
+            <div style="color:rgb(255, 130, 130);"
+              *ngIf="farmerEmail1.invalid && (farmerEmail1.dirty||farmerEmail1.touched)">
+              <div *ngIf="farmerEmail1.errors?.required">
+                <h2>email cannot be empty</h2>
+              </div>
+              <div *ngIf="farmerEmail1.errors?.pattern">
+                <h2>Please enter valid email</h2>
+              </div>
+            </div>
+
+            <label><b>Address Details</b></label>
+            <input type="text" placeholder="Address Line 1" name="addressLine1" #addressLine="ngModel"
+              style="height: 80px; width: 320px" [(ngModel)]=farmerAddress.addressLine1 #addressLine="ngModel"
+              required />
+
+            <div style="color:rgb(255, 130, 130);"
+              *ngIf="addressLine.invalid && (addressLine.dirty||addressLine.touched)">
+              <div *ngIf="addressLine.errors?.required">
+                <h2>Please enter your Address</h2>
+              </div>
+            </div>
+
+
+
+
+            <input type="text" placeholder="Address Line 2" name="addressLine2" style="height: 80px; width: 320px"
+              [(ngModel)]=farmerAddress.addressLine2 required />
+
+            <label><b>City</b></label>
+            <input type="text" placeholder="Enter City" name="city" [(ngModel)]=farmerAddress.city #farmerCity="ngModel"
+              pattern="[^\s]+[-a-zA-Z\s]+([-a-zA-Z]+)*" required />
+            <div style="color:rgb(255, 130, 130);" *ngIf="farmerCity.invalid && (farmerCity.dirty||farmerCity.touched)">
+              <div *ngIf="farmerCity.errors?.required">
+                <h2>Please enter your City</h2>
+              </div>
+              <div *ngIf="farmerCity.errors?.pattern">
+                <h2>Only alphabets allowed</h2>
+              </div><br>
+            </div>
+
+            <label><b>State</b></label>
+            <input type="text" placeholder="Enter state" name="state" [(ngModel)]=farmerAddress.state required
+              #farmerState="ngModel" pattern="[^\s]+[-a-zA-Z\s]+([-a-zA-Z]+)*" />
+            <div style="color:rgb(255, 130, 130);"
+              *ngIf="farmerState.invalid && (farmerState.dirty||farmerState.touched)">
+              <div *ngIf="farmerState.errors?.required">
+                <h2>Please enter your State</h2>
+              </div>
+              <div *ngIf="farmerState.errors?.pattern">
+                <h2>Only alphabets allowed</h2>
+              </div><br>
+            </div>
+
+            <label><b>Pin Code</b></label>
+            <input type="tel" placeholder="Enter Pin Code" name="pincode1" [(ngModel)]=farmerAddress.pincode
+              #pincode1="ngModel" pattern="[0-9]{6}" required />
+            <div style="color:rgb(255, 130, 130);" *ngIf="pincode1.invalid && (pincode1.dirty||pincode1.touched)">
+              <div *ngIf="pincode1.errors?.required">
+                <h2>pincode cannot be empty</h2>
+              </div>
+              <div *ngIf="pincode1.errors?.pattern">
+                <h2>pincode must be of 6 digit</h2>
+              </div><br>
+            </div>
+            <label><b>Land details:</b></label><br><br>
+
+            <label><b>Area</b></label>
+            <input type="number" placeholder="area in hectare" name="area" [(ngModel)]=farmerLand.area #area="ngModel"
+              required />
+            <div style="color:rgb(255, 130, 130);" *ngIf="area.invalid && (area.dirty||area.touched)">
+              <div *ngIf="area.errors?.required">
+                <h2>area cannot be empty</h2>
+              </div>
+            </div>
+            <br><br><br>
+            <label><b>Pin Code</b></label>
+            <input type="text" placeholder="Enter Pin Code" name="pincode2" [(ngModel)]=farmerLand.pincode required
+              #pincodeLand="ngModel" pattern="[0-9]{6}" />
+            <div style="color:rgb(255, 130, 130);"
+              *ngIf="pincodeLand.invalid && (pincodeLand.dirty||pincodeLand.touched)">
+              <div *ngIf="pincodeLand.errors?.required">
+                <h2>Pincode cannot be empty</h2>
+              </div>
+              <div *ngIf="pincodeLand.errors?.pattern">
+                <h2>Pincode must be of 6 digit</h2>
+              </div><br>
+            </div>
+            <label><b>Address</b></label>
+            <input type="text" placeholder="Address Line" name="address" [(ngModel)]=farmerLand.address
+              #address="ngModel" required />
+            <div style="color:rgb(255, 130, 130);" *ngIf="address.invalid && (address.dirty||address.touched)">
+              <div *ngIf="address.errors?.required">
+                <h2>Address cannot be empty</h2>
+              </div>
+            </div>
+
+            <label><b>Bank details:</b></label><br><br>
+
+            <label for="acc"><b>Account no.</b></label>
+            <input type="text" maxlength="18" placeholder="Enter Account no." name="accNo" [(ngModel)]=farmerBank.accNo
+              pattern="[0-9]{6,18}" #accNo="ngModel" required />
+            <div style="color:rgb(255, 130, 130);" *ngIf="accNo.invalid && (accNo.dirty||accNo.touched)">
+              <div *ngIf="accNo.errors?.required">
+                <h2>
+                  Account no. cannot be empty
+                </h2>
+              </div>
+              <div *ngIf="accNo.errors?.pattern">
+                <h2>
+                  Please enter numbers only
+                </h2>
+              </div>
+              <div *ngIf="accNo.errors?.maxlength">
+                <h2>
+                  maximum of 18 digits allowed
+                </h2>
+              </div>
+            </div>
+
+            <label><b>IFSC Code</b></label>
+            <input type="text" placeholder="Enter IFSC Code" name="ifscCode" [(ngModel)]=farmerBank.ifscCode
+              #IFSC_code="ngModel" pattern="[A-Z]{4}[0][0-9]{6}" required /><br><br>
+            <div style="color:rgb(255, 130, 130);" *ngIf="IFSC_code.invalid && (IFSC_code.dirty||IFSC_code.touched)">
+              <div *ngIf="IFSC_code.errors?.required">
+                <h2>
+
+                  IFSC code cannot be empty
+                </h2>
+              </div>
+              <div *ngIf="IFSC_code.errors?.pattern">
+                <h2>
+                  Please enter valid IFSC code
+                </h2>
+              </div>
+            </div>
+
+
+
+
+            <label><b>Document details:</b></label><br><br>
+
+
+            <!-- <label><b>Adhaar</b></label>
+            <input type="text" name="adhaar" [(ngModel)]=farmer.farmerAadhar required #adhaar="ngModel"
+              pattern="[2-9]{1}[0-9]{3}\s[0-9]{4}\s[0-9]{4}" />
+            <div style="color:rgb(255, 130, 130);;" *ngIf="adhaar.invalid && (adhaar.dirty||adhaar.touched)">
+              <div *ngIf="adhaar.errors?.required">
+                <h2>Adhaar No. cannot be empty</h2>
+              </div>
+              <div *ngIf="adhaar.errors?.pattern">
+                <h2>
+                  Please enter valid Adhaar Number
+                </h2>
+              </div>
+            </div> -->
+
+            <!-- Aadhar file upload -->
+
+            <label><b>Adhaar</b></label>
+            <input type="file" name="adhaarCard" required (change)="onFileChange($event)" required #aadhar="ngModel"
+              [(ngModel)]=dummyAadhar />
+
+            <!-- done -->
+
+            <div style="color:rgb(255, 130, 130);" *ngIf="aadhar.invalid && (aadhar.dirty||aadhar.touched)">
+              <div *ngIf="aadhar.errors?.required">
+                <h2>
+                  Aadhar card is required
+                </h2>
+              </div>
+            </div>
+
+
+            <label><b>Pan Card</b></label>
+            <input type="file" name="pancard" required (change)="onFileChange1($event)" required #pan="ngModel"
+              [(ngModel)]=dummyPan />
+            <div style="color:rgb(255, 130, 130);" *ngIf="pan.invalid && (pan.dirty||pan.touched)">
+              <div *ngIf="pan.errors?.required">
+                <h2 style="color:rgb(255, 130, 130);">
+                  Pan card is required
+                </h2>
+              </div>
+            </div>
+
+            <!-- Password -->
+            <div class="form-group">
+              <label for="farmerPassword"><b>Password</b></label>
+              <input type="password" placeholder="Enter Password" name="farmerPassword"
+                [(ngModel)]=farmer.farmerPassword pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,30})"
+                #farmerPassword="ngModel" required class="form-control" />
+              <div style="color:rgb(255, 130, 130);" class="form-group"
+                *ngIf="farmerPassword.invalid && (farmerPassword.dirty||farmerPassword.touched)">
+                <div *ngIf="farmerPassword.errors?.required">
+                  <h2>
+
+                    Password cannot be empty
+                  </h2>
+                </div>
+                <div *ngIf="farmerPassword.errors?.pattern">
+                  <p>
+                     minimum one upper case,one special character, one lower case and one number
+                  <p>
+                </div>
+              </div>
+            </div>
+            <!-- confirm password -->
+            <div class="form-group">
+              <label><b>Confirm Password</b></label>
+              <input type="password" placeholder="confirm Password" name="confirmPassword" [(ngModel)]=confirmPassword
+                pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,30})" #confirmP="ngModel"
+                appConfirmEqualValidator="farmerPassword" required />
+              <div style="color:rgb(255, 130, 130);" *ngIf="confirmP.invalid && (confirmP.dirty||confirmP.touched)">
+                <div *ngIf="confirmP.errors?.required">
+                  <h2>
+                    Password cannot be empty
+                  </h2>
+                </div>
+              </div>
+            </div>
+
+            <div *ngIf="confirmP.errors?.notEqual && confirmP.touched">
+              <p>
+                Password does not match
+              <p>
+            </div>
+
+            <!-- /confirm passwor -->
+            <button type="submit" [disabled]="!myForm.valid">Register</button>
+            <span><button type="reset">Reset</button></span>
+            <div style="color:rgb(255, 130, 130);" *ngIf=!myForm.valid>please fill mandatory fields</div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Checked -->
+  <div *ngIf="loaderc">
+    <div class="loader-wrapper">
+      <div class="loader"></div>
+    </div>
+  </div>
+
+  <div>
+    <app-footer></app-footer>
+  </div>
+</body>

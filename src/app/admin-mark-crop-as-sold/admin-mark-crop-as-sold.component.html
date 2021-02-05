@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FARMARKET</title>
+    <link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet">
+    </head>
+<body>
+    <app-admin-header></app-admin-header>
+           
+      <div class="row">
+        <div class="main"  style="display: flex;justify-content: center;width:100%">
+          <div class="card" style="width:80%">
+            <h1 style="display: flex;justify-content: center;">Mark Crop as Sold</h1>
+                <form>
+                    <div class="container" style="display: flex;justify-content: center;" *ngIf="showTable">
+                        <table style="min-width:500%">
+                      
+                            <tr>
+                              <th >Bid Id</th>
+                              <th >Request Id</th>
+                              <th style="min-width: 180px;" >Bid Date</th>
+                               <th >Crop Name</th>
+                               <th >Farmer Email </th>
+                               <th >Bidder Email</th>
+                               <th >Bid Amount</th>
+                               <th >Sell Crop</th>
+                            </tr>
+                         <tr *ngFor="let d of displayBid;"> 
+                             <td>{{d.bidId}}</td>
+                             <td >{{d.requestId}}</td>
+                             <td style="min-width: 180px;" >{{d.bidDate}}</td>
+                             <td >{{d.cropName}}</td>
+                             <td >{{d.farmerEmail}}</td>
+                             <td >{{d.bidderEmail}}</td>
+                             <td >{{d.bidAmount}}</td>
+                             <td style="width: 150px;padding: 20px;"><button type="button" (click)=sellCrops(d.bidId) style="font-size: 20px;border-radius: 30px;max-width: 150px;" >Sell Crop</button></td>
+                            
+                         </tr>
+                          </table><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+                                                
+                    </div>
+
+                    <div *ngIf="!showTable" style="display: flex;justify-content: center;">
+                      <h1 style="color:rgb(165, 255, 130);">  {{msg}}</h1>
+                    </div>
+                </form>
+                        
+             
+          </div>
+        </div>
+     </div>
+      
+     <div *ngIf="loaderc">
+      <div class="loader-wrapper">
+        <div class="loader"></div>
+      </div>
+    </div>
+        
+</body>
+</html>

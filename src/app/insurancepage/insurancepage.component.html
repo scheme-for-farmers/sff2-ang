@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FARMARKET</title>
+    <link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet">
+    
+</head>
+<body>
+      
+    <div class="topnav">
+        <img src="./assets/logo.png" style="float:left;size: 100px;">
+           
+        <div class ="links">
+            <a  [routerLink]="['/homelink']" style=" font-size: 50px;border-radius: 200px;margin-right: 165px;padding-bottom:60px;opacity: 1;">Logout</a>
+            <a [routerLink]="['/farmerWelcomePage']" style=" font-size: 50px;border-radius: 200px;margin-right: 55px;padding-bottom:60px;opacity: 1;">Home</a>
+     </div>
+     </div>
+    
+      
+      <div class="row">
+        <div class="main" style="display: flex;height: 100%;justify-content: center;">
+          <div class="card" style="width: 70%;height: 200px;">
+			<h2 style="text-align: center;font-size: 30px;">Insurance</h2>
+            <!--<form onsubmit="validate();">-->
+                <form>
+                    <div class="container" style="width: 800px;height: 100px;max-width:900px;max-height: 1px;">
+                  
+                        <div class="newLinks">
+               
+                    
+                        <ul>
+                        <li><a [routerLink]="['/applyforpolicy']" style="margin-left: 50px;"> Apply for a policy </a></li>
+                        <li ><a [routerLink]="['/claim']" style="margin-left: 100px;"> Claim Insurance  </a></li>
+                      
+                        </ul>
+                        </div>
+                    </div>
+                </form>
+                        
+             
+          </div>
+        </div>
+     </div>
+      
+     
+   
+</body>
+<app-footer></app-footer>
+</html>

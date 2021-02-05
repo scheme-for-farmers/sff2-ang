@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FARMARKET</title>
+    <link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet">
+    </head>
+<body>
+  <app-admin-header></app-admin-header>
+      
+
+      <div class="row">
+        <div class="main"  style="display: flex;justify-content: center;">
+          <div class="card" style="width:100%">
+            <h1 style="display: flex;justify-content: center;">Approve bidder</h1>
+            <!-- <form #myForm1="ngForm" (ngSubmit)="viewBidder()">
+           <button type="submit">View all</button>
+            </form> -->
+            <form #myForm2="ngForm" >
+                    <div class="container" style="display: flex;justify-content: center;" *ngIf="showTable">
+                        <table style="width:100%">
+                      
+                            <tr>
+                              <th style="min-width: 150px;">Bidder Id</th>
+                              <th>Name</th>
+                              <th>Contact</th>
+                              <th>Email</th>
+                               <th>Approve</th>
+                               <th>Disapprove</th>
+                               <th style="min-width: 200px;">Download Files</th>
+                            </tr>
+                         <tr *ngFor="let bidder of bidders;">
+                            <td>{{bidder.bidderId}}</td>
+                             <td>{{bidder.bidderName}}</td>
+                             <td>{{bidder.bidderContactNo}}</td>
+                             <td>{{bidder.bidderEmail}}</td>
+                             <td style="padding: 20px;"><button type="button" (click)=approveBidder(bidder.bidderEmail) style="font-size: 20px;border-radius: 30px;max-width: 150px;" >Approve</button>
+                          
+                            </td>
+                             <td style="padding: 20px;"><button type="button" (click)=rejectBidder(bidder.bidderEmail) style="font-size: 20px;border-radius: 30px;max-width: 150px;" >Disapprove</button></td>
+                             <td>
+                              <button type="button" (click)=download(bidder.bidderId)
+                                style="font-size: 20px;border-radius: 30px;max-width: 150px;">Download</button>
+                             </td>
+                         </tr>
+    
+                          </table><br><br>
+
+                    </div>
+                    <div *ngIf=showImage>
+                      <img src="http://localhost:8080/aadharCard/{{aadharPath}}" alt="No image" />
+                      <img src="http://localhost:8080/panCard/{{panPath}}" alt="No image" />
+                    </div>
+
+                    <div *ngIf="!showTable" style="display: flex;justify-content: center;">
+                    <h1 style="color:rgb(165, 255, 130);">  {{msg}}</h1>
+              </div>
+                </form>
+                        
+             
+          </div>
+        </div>
+     </div>
+
+     <div *ngIf="loaderc">
+      <div class="loader-wrapper">
+        <div class="loader"></div>
+      </div>
+    </div>
+     <app-footer></app-footer>      
+</body>
+
+</html>

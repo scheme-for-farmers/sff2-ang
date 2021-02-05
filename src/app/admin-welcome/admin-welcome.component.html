@@ -1,0 +1,102 @@
+<html>
+
+<head>
+  <title>FARMARKET</title>
+  <link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="header">
+    <h1>Welcome Admin</h1>
+    <div class="topnav" style="width: 100%;">
+      <div class="row" style="width: 100%;">
+        <div class="main" style="display: flex;width: 100%;justify-content: center; ">
+            <div class="card" style="width: 100%;">
+                <!-- <div class="bg"></div>
+                <div class="bg bg2"></div>
+                <div class="bg bg3"></div> -->
+                <div class="topnav">
+                    <!-- <h1 style="font-family: Georgia, 'Times New Roman', Times, serif;font-size: 40px;">WELCOME TO FARMARKET</h1> -->
+    
+                    <img src="./assets/logo.png" width="111500" height="111500" style="float:left;size: 200px;padding-bottom:10px;padding-top: 10px;">
+    
+                    <div class="links">
+                        <a [routerLink]="['/loginlink']"
+                            style=" font-size: 30px;margin-top: 20px; font-family:'Times New Roman', Times, serif;color: rgb(255, 255, 255);" (click)=removeSession()>Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="main" style="display: flex; justify-content: center">
+      <div class="card" style="
+            display: flex;
+            justify-content: center;
+            border-radius: 20px;
+            width: 100%;
+
+          ">
+        <!-- <div class="bg"></div>
+        <div class="bg bg2"></div>
+        <div class="bg bg3"></div> -->
+        <form>
+          <div class="d" style="max-width: 1050px">
+            <a [routerLink]="['/adminAddUpdateCrop']">
+              <button type="submit" style="width: 500px; margin-right: 4px; border-radius: 50px">
+                Add or Update Crop
+              </button>
+            </a>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a [routerLink]="['/adminaddInsurance']">
+              <button type="submit" style="width: 500px; margin-right: 4px; border-radius: 50px">
+
+
+
+                Add or Update Insurance
+              </button></a>
+            <a [routerLink]="['/adminApproveSellRequest']">
+              <button type="submit" style="width: 500px; margin-right: 4px; border-radius: 50px">
+                Approve Sell Request
+              </button>
+            </a>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a [routerLink]="['/approveclaimInsurance']">
+              <button type="submit" style="width: 500px; margin-right: 4px; border-radius: 50px">
+                Approve Claim Request For Insurance
+              </button></a>
+            <a [routerLink]="['/adminApproveFarmer']">
+              <button type="submit" style="width: 500px; margin-right: 4px; border-radius: 50px">
+                Approve Farmer
+              </button>
+            </a>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a [routerLink]="['/adminApproveBidder']">
+              <button type="submit" style="width: 500px; margin-right: 4px; border-radius: 50px">
+                Approve Bidder
+              </button>
+            </a>
+            <a [routerLink]="['/adminMarkCropAsSold']">
+              <button type="submit" style="width: 500px; border-radius: 50px; margin-right: 4px">
+                Mark Crop As Sold
+              </button>
+            </a>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a [routerLink]="['/approveApplyInsurance']">
+              <button type="submit" style="width: 500px; border-radius: 50px">
+                Approve Applied Insurance
+              </button>
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</body>
+
+
+</html>

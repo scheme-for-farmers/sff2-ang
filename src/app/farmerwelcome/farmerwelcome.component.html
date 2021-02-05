@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FARMARKET</title>
+    <link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet">
+
+
+</head>
+<body>
+      
+  <app-farmer-header></app-farmer-header>
+      
+      <div class="row">
+        <div class="main" >
+          <div class="card" style="resize: initial;max-height: 490px;" >
+
+            <!-- <div class="bg"></div>
+            <div class="bg bg2"></div>
+            <div class="bg bg3"></div> -->
+
+
+
+			<h4 style="text-align: center; font-size: 30px;text-shadow:2px 2px 2px 2px;color: white;"> Logged in as {{mail}}</h4>
+            <!--<form onsubmit="validate();">-->
+              <form>
+                    <div class="container" style="width: 800px;display: flex;justify-content: center;border:2px thick black;">
+                  
+                            <div class="newLinks">
+                                <ul>
+                              <li>     <a [routerLink]="['/sellrequest']" style="margin-left: 20px;">Place Sell Request</a></li>
+                     <li>   <a [routerLink]="['/soldhistory']">View Sold Crop History </a></li>
+                     
+                       <li> <a [routerLink]="['/marketpalce']">View Marketplace </a></li>
+                       <li><a [routerLink]="['/claimFarmer']">Claim Insurance</a></li>
+                    </ul>
+                    </div>
+    
+                 </div>
+                
+                </form>
+               
+                        
+             
+          </div>
+        </div>
+     </div>
+      
+     <app-footer></app-footer> 
+         
+</body>
+
+</html>

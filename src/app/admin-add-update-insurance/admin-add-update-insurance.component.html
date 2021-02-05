@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>FARMARKET</title>
+  <link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+  <app-admin-header></app-admin-header>
+  <div class="row" style="display: flex;justify-content: center;">
+    <div class="main" style="display: flex;justify-content: center;">
+      <div class="card" style="width: 100%;">
+
+        <h1 style="display: flex;justify-content: center;">Add insurance</h1>
+        <form id="insurance" #myForm="ngForm" (ngSubmit)="add()">
+
+          <div class="container">
+            <label><b>Premium Amount</b></label><br>
+            <input type="text" placeholder="Amount" #premamount name="premiumAmount " [(ngModel)]=insurance.premiumAmount
+              pattern="[0-9]" required><br>
+              <!-- <div style="color:rgb(255, 130, 130);" *ngIf="premiumAmount.invalid && (premiumAmount.dirty||premiumAmount.touched)"> -->
+                <!-- <div *ngIf="premiumAmount.errors?.required">
+                  <h2>Please enter your name</h2>
+                </div>
+                <div *ngIf="bidderName.errors?.pattern">
+                  <h2>Only Alphabets</h2>
+                </div><br>
+              </div> -->
+
+            <label><b>Sum Insured Per Hectare</b></label><br>
+            <input type="text" placeholder="Sum Insured" #suminsured name="sumInsuredPerHectare"
+              [(ngModel)]=insurance.sumInsuredPerHectare pattern="[0-9]" required><br>
+            <label><b>Insurance Company Name</b></label><br>
+            <input type="text" placeholder="Company Name" name="insuranceCompanyName"
+              [(ngModel)]=insurance.insuranceCompanyName required><br>
+
+            <label><b>Crop Type</b></label>
+            <div class="form-group">
+              <select style="font-size:30px;" class="form-control" #ctype name="cropType" [(ngModel)]=c.cropType
+                (change)="viewCropName()" required>
+                <option disabled value="">Select crop type</option>
+                <option *ngFor="let cropType of cropTypes" value="{{cropType}}">{{cropType}}</option>
+              </select>
+            </div>
+
+            <label><b>Crop Name</b></label>
+            <div class="form-group">
+              <select style="font-size:30px;" class="form-control" #cname name="cropName" [(ngModel)]=c.cropName
+                (change)="viewCropName()" required>
+                <option disabled value="">Select crop name</option>
+                <option *ngFor="let cropName of cropNames" value="{{cropName}}">{{cropName}}</option>
+              </select>
+            </div>
+            <br><br>
+            <!-- <button type="submit" [disabled]="!myForm.valid">ADD</button> -->
+            <button type="submit">ADD</button>
+          </div>
+        </form>
+        <div style="display: flex;justify-content: center;">
+          <h2 style="text-align: center;color:rgb(165, 255, 130);"> {{msg}}</h2>
+          <h2 style="text-align: center;color: rgb(228, 46, 13);">{{msg1}}</h2>
+        </div>
+        <div *ngIf="showTable">
+        <h1 style="display: flex;justify-content: center;">Update insurance</h1><br>
+        
+        <form #myForm2="ngForm">
+
+          <div class="container" style="display: flex;justify-content: center;width: 100%;">
+
+            <table style="width: 80%;">
+
+              <tr>
+                <th>Insurance Id</th>
+                <th>Premium Amount </th>
+                <th>Sum insured per Hectare</th>
+                <th>Insurance company name </th>
+                <th>Crop Name</th>
+                <th>Update</th>
+              </tr>
+              <tr *ngFor="let i of insuranceList;">
+                <td>{{i.insuranceId}}</td>
+                <td>
+                  {{i.premiumAmount}}
+                  <input type="text" #pamt placeholder="premiumAmount" name="premiumAmount" ngModel required
+                    style="height: 50px;text-align: center;font-size: 20px;">
+                </td>
+
+                <td>
+                  {{i.sumInsuredPerHectare}}
+                  <input type="text" #sumamt placeholder="Sum Insured" name="sumInsuredPerHectare" ngModel required
+                    style="height: 50px;text-align: center;font-size: 20px;">
+                </td>
+
+                <td> {{i.insuranceCompanyName}}</td>
+
+                <td>
+                  {{i.crop.cropName}} </td>
+
+                <td style="padding: 20px;"><button type="submit" (click)=updateInsurance(i,pamt.value,sumamt.value)
+                    style="font-size: 20px;border-radius: 30px;max-width: 150px;" [disabled]="!myForm2.valid">Update</button></td>
+
+              </tr>
+
+            </table>
+
+            
+          </div>
+        </form>
+        <br><br><br><br><br><br>
+      </div>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</body>
+</html>

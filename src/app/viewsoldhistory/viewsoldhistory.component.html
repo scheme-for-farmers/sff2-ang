@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>FARMARKET</title>
+  <link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <app-farmer-header></app-farmer-header>
+
+
+
+  <div class="row">
+    <div class="main">
+      <div class="card" >
+        <div class="links">
+          <a [routerLink]="['/viewUnsoldCropsOfFarmer']"
+              style=" font-size: 30px;float:right;text-decoration: none; font-family:'Times New Roman', Times, serif;color: rgb(255, 255, 255);" >View Unsold Crops</a>
+      </div>
+      <br><br><br>
+        <h1 style="text-align: center;">Sold History</h1>
+        <!--<form onsubmit="validate();">-->
+
+       <div style="display: flex;justify-content: center;" *ngIf="showTable">
+        <table style="width:100%" >
+
+          <tr>
+            <th style="min-width: 180px;">Sold Date </th>
+            <th>customer email</th>
+            <th>Crop Name</th>
+            <th>Quantity</th>
+            <th>MSP</th>
+            <th>Sold Price</th>
+            <th>Total Price </th>
+          </tr>
+          <tr *ngFor="let soldHistory of soldHistories">
+            <td style="width: 130px">
+              {{ soldHistory.soldDate }}
+            </td>
+            <td>
+              {{ soldHistory.bidderEmail }}
+            </td>
+            <td>
+              {{ soldHistory.cropName }}
+            </td>
+            <td>
+              {{ soldHistory.quantity }}
+            </td>
+            
+            <td>
+              {{ soldHistory.basePrice }}
+            </td>
+            <td>
+              {{ soldHistory.bidAmount }}
+            </td>
+            <td>
+              {{ soldHistory.totalPrice }}
+            </td>
+            
+          </tr>
+        </table>
+        
+      </div>
+      <br><br>
+      
+      <div *ngIf="!showTable">
+        <h2 style="color:  rgb(165, 255, 130);">  {{msg}}</h2>
+    </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

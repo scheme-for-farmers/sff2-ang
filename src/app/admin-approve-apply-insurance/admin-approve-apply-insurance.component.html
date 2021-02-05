@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>FARMARKET</title>
+  <link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <app-admin-header></app-admin-header>
+
+
+  <div class="row">
+    <div class="main" style="display: flex;justify-content: center;">
+      <div class="card" style="width:100%">
+        <h1 style="display: flex;justify-content: center;">Approve Insurance</h1>
+        <div *ngIf="flag"  style="display: flex;justify-content: center;color: rgb(165, 255, 130);">
+          <h2>{{msg1}}</h2>
+        </div>
+        <form >
+          <div *ngIf="showTable" class="container" style="display: flex;justify-content: center;">
+            <table style="max-width:1px">
+
+              <tr>
+                <th >PolicyNumber</th>
+                <th >RequestId</th>
+                <th >Farmer Email</th>
+                <th >Crop Name</th>
+                <th >Company Name</th>
+                <th >Sum Insured</th>
+                <th >premium Amount</th>
+                <th >Total Sum Insured</th>
+                <th >Approve</th>
+                <th >disApprove</th>
+              </tr>
+              <tr *ngFor="let i of insuranceApprovals">
+                <td>{{i.policyNo}}</td>
+                <td>{{i.requestId}}</td>
+                <td>{{i.farmerEmail}}</td>
+                <td>{{i.cropName}}</td>
+                <td>{{i.insuranceCompanyName}}</td>
+                <td>{{i.sumInsured}}</td>
+                <td>{{i.premiumAmount}}</td>
+                <td>{{i.totalSumInsured}}</td>
+                <td style="padding: 20px;"><button type="button" (click)=approveInsurance(i.policyNo,i.requestId)
+                    style="font-size: 20px;border-radius: 30px;max-width: 150px;">Approve</button></td>
+                <td style="padding: 20px;"><button type="button" (click)=rejectInsurance(i.policyNo)
+                    style="font-size: 20px;border-radius: 30px;max-width: 150px;">Disapprove</button></td>
+              </tr>
+            </table><br><br>
+
+          </div>
+          
+        </form>
+        <div *ngIf="!showTable"
+            style="display: flex;justify-content: center;color: rgb(165, 255, 130);">
+            <h2>{{msg}}</h2>
+          </div>
+        <br><br><br><br>
+
+      </div>
+    </div>
+  </div>
+  <div *ngIf="loaderc">
+    <div class="loader-wrapper">
+      <div class="loader"></div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</body>
+
+</html>

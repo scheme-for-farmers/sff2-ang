@@ -1,0 +1,51 @@
+body {
+    top:0;
+    left:0;
+    position:absolute;
+    /* position:fixed; */
+        background: url("src\assets\pandu-ior-VuOjCivv3fc-unsplash.jpg") no-repeat center 0;
+       /* background-image: url("C:\Users\Kaustubha Shah\Desktop\work\final_project\fridayFromYash\farmerangular\src\assets\m-x9NfeD3FpsE-unsplash.jpg") no-repeat center 0; */
+    padding:0px;
+        color: rgb(255, 255, 255);
+        width: 103%;
+        height: 280vh;
+        /* display: flex; */
+        /* justify-content: center; */
+        /* align-items: center; */
+        perspective: 1000px;
+        perspective-origin: 0% 0%;
+        /* animation: animation 25s linear infinite; */
+    
+        text-align: center;
+        margin: 0 auto; 
+        /* background-image: url("src\assets\091a0e2f-b93d-481b-9a60-db520c87ec33.jpg"); */
+      }
+
+      .card {
+        background-color: white;
+        /* padding: 20px; */
+        padding: 1px;
+        /* padding-right: 0px; */
+        margin-top: 20px;
+        overflow: hidden;
+        border-radius: 10px;
+        /* animation: slideUp .8s ease forwards .5s; */
+      
+        /* width: 30rem; */
+        /* height: 20rem; */
+        box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+        border-radius: 5px;
+        background-color: rgba(49, 49, 49, 0.589);
+      
+        backdrop-filter: blur(5px);
+      }
+input{
+  box-shadow: none
+}
+th{
+    color: rgb(39, 39, 39);
+    
+}
+td{
+    color: rgb(34, 34, 34);
+}

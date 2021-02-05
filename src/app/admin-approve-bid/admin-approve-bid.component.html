@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FARMARKET</title>
+    <link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet">
+    </head>
+<body>
+    <div class="header">
+         <div class="topnav">
+        <img src="./assets/logo.png" style="float:left;size: 100px;">
+           
+        <div class ="links">
+                  <a [routerLink]="['/loginlink']" style=" font-size: 30px;border-radius: 200px;margin-right: 65px;padding-bottom:60px;opacity: 1;font-family:'Times New Roman', Times, serif" (click)=removeSession()>Logout</a>
+                  <a [routerLink]="['/adminWelcome']" style=" font-size: 30px;border-radius: 200px;margin-left: 65px;padding-bottom:60px;opacity: 1;font-family:'Times New Roman', Times, serif" >Home</a>
+           </div>
+           </div>
+           </div>
+      
+
+      <div class="row">
+        <div class="main"  style="display: flex;justify-content: center;">
+          <div class="card" style="width:100%">
+            <h2 style="display: flex;justify-content: center;">Approve bid</h2>
+                <form>
+                    <div class="container"style="display: flex;justify-content: center;" *ngIf="showTable">
+                        <table style="width:100%">
+                      
+                            <tr>
+                              <th style="min-width: 100px;">Bid Id</th>
+                              <th style="min-width: 100px;">Request Id</th>
+                              <th style="min-width: 180px;">Crop Type</th>
+                              <th style="min-width: 180px;">Crop Name</th>
+                              <th>Email</th>
+                               <th style="min-width: 300px">Current Bid Amount</th>   
+                               <th>Approve</th>
+                            </tr>
+                            <tr *ngFor="let b of bids">
+                              <td>{{b.bidId}}</td>
+                              <td>{{b.requestId}}</td>
+                              <td>{{b.cropType}}</td>
+                              <td>{{b.cropName}}</td>
+                              <td>{{b.bidderEmail}}</td>
+                              <td>{{b.currentBidAmount}}</td>
+
+                              <td style="padding: 20px;"><button type="button" (click)=approveBid(b.bidId) style="font-size: 20px;border-radius: 30px;max-width: 150px;" >Approve</button></td>
+                            </tr>
+                          </table><br><br>
+ 
+                    </div>
+
+                    <div *ngIf="!showTable" class="container">
+                      <h2>  {{msg}}</h2>
+                </div>
+  
+
+                </form>
+                        
+             
+          </div>
+        </div>
+     </div>
+
+     <div *ngIf="loaderc">
+      <div class="loader-wrapper">
+         <div class="loader"></div>
+        </div>
+      </div>
+
+     <app-footer></app-footer>      
+</body>
+</html>

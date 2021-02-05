@@ -1,0 +1,99 @@
+
+<body>
+<app-header></app-header>
+<div class="row">
+  <div class="main"  style="display: flex;justify-content: center;">
+
+
+
+
+
+    <div class="card" style="width: 100%;">
+      <!-- <div class="bg"></div>
+      <div class="bg bg2"></div>
+      <div class="bg bg3"></div> -->
+      <h1 style="text-align: center;">Login to Farmarket</h1>
+      <!--<form onsubmit="validate();">-->
+        <h2 style="text-align: center;color: rgba(247, 162, 162, 0.938);"> {{msg1}}</h2>
+      <form id="login" #myForm="ngForm" (ngSubmit)="login()"> 
+
+        <div class="container" >
+          <!-- <div *ngIf=check>{{message}}</div> -->
+
+            <label for="uname" ><b>Email</b></label>
+            <input type="text" placeholder="Enter Email" name="email" 
+             
+             required
+             #email1="ngModel"
+            
+             [(ngModel)]=email>
+             <div style="color:rgba(250, 136, 136, 0.938);font-size:20px;" *ngIf="email1.invalid && (email1.dirty||email1.touched)">
+              <div *ngIf="email1.errors?.required">email cannot be empty</div>
+              
+              </div>
+             
+        
+            <label for="psw" ><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="password" 
+                         required 
+                         pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,30})"
+                         #password1="ngModel"
+                         [(ngModel)]=password>
+                         <div style="color:rgba(250, 136, 136, 0.938);font-size:20px;" *ngIf="password1.invalid && (password1.dirty||password1.touched)">
+                          <div *ngIf="password1.errors?.required">password cannot be empty</div>
+                         
+                        </div>
+
+            <button type="submit" style="font-size: 25px;">Login</button>
+            
+           <!-- <input type="checkbox" checked="checked" >
+           <label >Remember me</label> -->
+          </div>
+          <div class="container"  >
+             
+              <button class="cancelbtn" type="reset" style="width: 43%;border-radius: 20px; font-size: 20px;">Cancel</button>
+              <span class="psw"> <a [routerLink]="['/forgetPassword']"  style="font-size: 20px;color: rgb(219, 215, 255);" >Forgot password?</a></span>
+          
+     
+          
+            
+          </div>
+       </form>
+
+    </div>
+    </div>
+
+
+
+
+    <div class="main"  style="display: flex;justify-content: center;">
+      <div class="card" style="width: 100%;">
+        <!-- <div class="bg"></div>
+                <div class="bg bg2"></div>
+                <div class="bg bg3"></div> -->
+      
+      
+      <form>
+      
+      <p style="display: flex;justify-content: center; color: #7ca2f5; font-weight: 200;font-size: 25px;">New user? Please register here</p>
+      <p style="display: flex;justify-content: center;color:  #7ca2f5; font-weight: 200;font-size: 25px; ">Are you farmer or bidder?</p>
+      <span style="display: flex;justify-content: center;font-size: 30px;font-weight: 500; color: rgb(93, 255, 101);text-shadow: 2px 2px 8px #131312;">
+      <a [routerLink]="['/bregistration']" style="font-size: 25px;border:3px solid rgba(255, 255, 255, 0.514);border-radius: 10px; text-decoration: none;padding: 10px;color: rgb(255, 255, 255);background-image: none;box-shadow: none;"> Bidder </a>&nbsp;&nbsp;
+      <!-- </span> -->
+      <!-- <br> -->
+        <a [routerLink]="['/fregistration']" style="font-size: 25px;border:3px solid rgba(255, 255, 255, 0.514);border-radius: 10px; padding: 10px;text-decoration: none;color: white;background-image: none;box-shadow: none;" >Farmer </a>
+      </span>
+      <br><br>
+      
+      
+      </form>
+      </div> 
+      
+      </div>
+      
+      
+
+</div>
+
+<app-footer></app-footer>
+</body>

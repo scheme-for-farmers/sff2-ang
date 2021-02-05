@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+  <title>FARMARKET</title>
+  <link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet">
+ 
+</head>
+ 
+<body>
+ <app-bidder-header></app-bidder-header>
+  <div class="row">
+    <div class="main" >
+      <div class="card">
+        <h2 style="text-align: center;">Logged in as {{name}}</h2>
+        <h2 style="text-align: center;color: rgb(165, 255, 130);"> {{msg}}</h2>
+        <h1 style="text-align: center;color: rgb(241, 132, 132);"> {{msg1}}</h1>
+        <!--<form onsubmit="validate();">-->
+        <form #myForm="ngForm">
+          <div class="container" style="display: flex;justify-content: center;"*ngIf="showTable">
+            <table style="min-width:500%;">
+ 
+              <tr>
+                <th >Crop Type </th>
+                <th >Crop Name </th>
+                <th >Seller email</th>
+                <th >Quantity </th>
+                <th >Current Bid Amount</th>
+                <th >Bid Amount</th>
+                <th >Place bid</th>
+              </tr>
+              <tr *ngFor="let sr of requestList;">
+                <td >{{sr.cropType}}</td>
+                <td >{{sr.cropName}}</td>
+                <td >{{sr.farmerEmail}}</td>
+                <td >{{sr.quantity}}</td>
+                <td >{{sr.currentBidAmount}}</td>
+                <td><input type="number" #bidAmt placeholder="Bid Amount" name="bamount" ngModel required style="height: 50px;text-align: center;font-size: 20px;"></td>
+                <td><button type="button" (click)=placeBid(sr,bidAmt.value) style="font-size: 20px;border-radius: 30px;max-width: 150px;">Bid</button></td>
+            </table><br><br><br><br><br><br><br><br><br><br><br><br><br>
+          </div>
+          <div *ngIf="!showTable" style="display: flex;justify-content: center;">
+            <h2 style="color:rgb(165, 255, 130);">  {{msg2}}</h2>
+      </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+ 
+  <div *ngIf="loaderc">
+    <div class="loader-wrapper">
+      <div class="loader"></div>
+    </div>
+  </div>
+
+
+
+  <!-- <app-footer></app-footer> -->
+</body>
+ 
+</html>

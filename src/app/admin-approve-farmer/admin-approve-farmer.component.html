@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>FARMARKET</title>
+  <link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <app-admin-header></app-admin-header>
+
+
+  <div class="row">
+    <div class="main" style="display: flex;justify-content: center;">
+      <div class="card" style="width:100%">
+        <h1 style="display:flex;justify-content: center;">Approve farmer</h1>
+        <form>
+          <div class="container" style="display: flex;justify-content: center;" *ngIf="showTable">
+            <table style="width:30%">
+
+              <tr>
+                <th style="min-width: 150px;">Farmer Id</th>
+                <th>Name</th>
+                <th>Contact</th>
+                <th>Email</th>
+                <th>Approve</th>
+                <th>Disapprove</th>
+                <th style="min-width: 280px;">Download files</th>
+
+              </tr>
+              <tr *ngFor="let farmer of farmers;">
+                <td>{{farmer.farmerId}}</td>
+                <td>{{farmer.farmerName}}</td>
+                <td>{{farmer.farmerContactNo}}</td>
+                <td>{{farmer.farmerEmail}}</td>
+                <td style="padding: 20px;"><button type="button" (click)=approveFarmers(farmer.farmerEmail)
+                    style="font-size: 20px;border-radius: 30px;max-width: 150px;">Approve</button></td>
+                <td style="padding: 20px;"><button type="button" (click)=rejectFarmer(farmer.farmerEmail)
+                    style="font-size: 20px;border-radius: 30px;max-width: 150px;">Disapprove</button></td>
+                <td>
+                  <button type="button" (click)=download(farmer.farmerId)
+                    style="font-size: 20px;border-radius: 30px;max-width: 150px;">Download</button>
+                </td>
+              </tr>
+
+            </table><br><br>
+          </div>
+          <div *ngIf=showImage>
+            <img src="http://localhost:8080/aadharCard/{{aadharPath}}" alt="No image" />
+            <img src="http://localhost:8080/panCard/{{panPath}}" alt="No image" />
+          </div>
+          <br><br><br>
+          <div *ngIf="!showTable" style="display: flex;justify-content: center;">
+            <h1 style="color:rgb(165, 255, 130);">{{msg}}</h1>
+          </div>
+        </form>
+
+
+      </div>
+    </div>
+  </div>
+  <div *ngIf="loaderc">
+    <div class="loader-wrapper">
+      <div class="loader"></div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</body>
+
+</html>

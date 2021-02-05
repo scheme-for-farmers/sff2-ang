@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>FARMARKET</title>
+    <link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+<app-farmer-header></app-farmer-header>
+    <div class="row">
+        <div class="main">
+            <div class="card">
+                <h1 style="text-align: center;">UnSold Crops</h1>
+                <!--<form onsubmit="validate();">-->
+
+                <div style="display: flex;justify-content: center;" *ngIf="showTable">
+                    <table style="width:80%">
+
+                        <tr>
+                            <th>Request Id</th>
+                            <th>CropType</th>
+                            <th>CropName</th>
+                            <th>Quantity</th>
+                            <th> Approval Status</th>
+                            <th>Sold Status</th>
+                        </tr>
+                        <tr *ngFor="let l of list">
+                            <td style="min-width: 150px">
+                                {{l.requestId}}
+                            </td>
+                            <td>
+                                {{ l.crop.cropType }}
+                            </td>
+                            <td>
+                                {{ l.crop.cropName }}
+                            </td>
+                            <td>
+                                {{ l.quantity }}
+                            </td>
+
+                            <td>
+                                {{l.approve}}
+                            </td>
+                            <td>{{l.status}}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div *ngIf="!showTable" style="color:rgb(165, 255, 130);">
+                    <h2> {{msg}}</h2>
+                </div>
+                <br><br><br>
+                
+            </div>
+        </div>
+    </div>
+
+
+   
+<app-footer></app-footer>
+</body>
+
+</html>

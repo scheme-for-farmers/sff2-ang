@@ -1,0 +1,68 @@
+body {
+    top:0;
+    left:0;
+    position:absolute;
+    /* position:fixed; */
+        background: url("C:\Users\HP\Downloads\farmerangular\src\assets\pandu-ior-VuOjCivv3fc-unsplash.jpg") no-repeat center 0;
+       /* background-image: url("C:\Users\Kaustubha Shah\Desktop\work\final_project\fridayFromYash\farmerangular\src\assets\m-x9NfeD3FpsE-unsplash.jpg") no-repeat center 0; */
+    padding:0px;
+        color: rgb(255, 255, 255);
+        width: 103%;
+        height: 140vh;
+        /* display: flex; */
+        /* justify-content: center; */
+        /* align-items: center; */
+        perspective: 1000px;
+        perspective-origin: 0% 0%;
+        /* animation: animation 25s linear infinite; */
+    
+        text-align: center;
+        margin: 0 auto; 
+        /* background-image: url("src\assets\091a0e2f-b93d-481b-9a60-db520c87ec33.jpg"); */
+      }
+
+      .card {
+        background-color: rgba(68, 68, 68, 0.541);
+        /* padding: 20px; */
+        padding: 1px;
+        /* padding-right: 0px; */
+        margin-top: 20px;
+        overflow: hidden;
+        border-radius: 10px;
+        /* animation: slideUp .8s ease forwards .5s; */
+      
+        /* width: 30rem; */
+        box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+        border-radius: 5px;
+        background-color: rgba(49, 49, 49, 0.589);
+      
+        backdrop-filter: blur(5px);
+      }
+      .bg {
+        animation:slide 3s ease-in-out infinite alternate;
+        background-image: linear-gradient(-60deg, rgba(207, 207, 207, 0.301) 50%, rgba(77, 77, 77, 0.383) 50%);
+        bottom:0;
+        left:-50%;
+        opacity:.5;
+        position:fixed;
+        right:-50%;
+        top:0;
+        z-index:-1;
+      }
+      
+      .bg2 {
+        animation-direction:alternate-reverse;
+        animation-duration:4s;
+      }
+      
+      .bg3 {
+        animation-duration:5s;
+      }
+      @keyframes slide {
+        0% {
+          transform:translateX(-25%);
+        }
+        100% {
+          transform:translateX(25%);
+        }
+      } 

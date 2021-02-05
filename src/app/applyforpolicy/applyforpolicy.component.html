@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>FARMARKET</title>
+  <link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <app-farmer-header></app-farmer-header>
+  <div class="row">
+    <div class="main" style="display: flex;justify-content: center;">
+      <div class="card" style="width: 100%;">
+        <h2 style="text-align: center;"> Insurance Application</h2>
+        <!--<form onsubmit="validate();">-->
+        
+        <form id="apply" #myForm="ngForm">
+          <h2 style="color:rgb(165, 255, 130);">{{msg}}</h2>
+          <div class="container">
+            <label for="season"><b> Season </b></label>
+            <input type="text" placeholder=" Season " name="season" #season1="ngModel" [(ngModel)]=season 
+            pattern="[^\s]+[-a-zA-Z\s]+([-a-zA-Z]+)*" required>
+            <div style="color:rgb(255, 130, 130);" *ngIf="season1.invalid && (season1.dirty||season1.touched)">
+              <div *ngIf="season1.errors?.required">
+                <h2>Please enter Season</h2>
+              </div>
+              <div *ngIf="season1.errors?.pattern">
+                <h2>Only alphabets allowed</h2>
+              </div><br>
+            </div>
+
+            <label for="year"><b>Year</b></label><br>
+            <input type="text" placeholder="Year" name="year" #year1="ngModel" [(ngModel)]=year pattern="[2]{1}[0-9]{3}" required>
+            <div style="color:rgb(255, 130, 130);" *ngIf="year1.invalid && (year1.dirty||year1.touched)">
+              <div *ngIf="year1.errors?.required">
+                <h2>Please enter valid year</h2>
+              </div>
+              <div *ngIf="year1.errors?.pattern">
+                <h2>Only number allowed!</h2>
+              </div><br>
+            </div>
+            <br>
+
+            <!-- <label for="crop"><b>Crop Name </b></label>
+            <input type="text" placeholder="Crop Name" name="crop" #crop1="ngModel" [(ngModel)]=crop 
+            pattern="[^\s]+[-a-zA-Z\s]+([-a-zA-Z]+)*" required>
+            <div style="color:rgb(255, 130, 130);" *ngIf="crop1.invalid && (crop1.dirty||crop1.touched)">
+              <div *ngIf="crop1.errors?.required">
+                <h2>Please enter valid crop</h2>
+              </div>
+              <div *ngIf="crop1.errors?.pattern">
+                <h2>Only alphabets allowed!</h2>
+              </div><br>
+            </div> -->
+
+            <label for="area"><b> Area </b></label><br>
+            <input type="number" #area1=ngModel placeholder="Area" name="area" [(ngModel)]=insuranceInputDto.area pattern="(?![0]$)\d{1,4}" required>
+            <div style="color:rgb(255, 130, 130);" *ngIf="area1.invalid && (area1.dirty||area1.touched)">
+              <div *ngIf="area1.errors?.required">
+                <h2>Please enter valid area</h2>
+              </div>
+              <div *ngIf="area1.errors?.pattern">
+                <h2>Only numbers allowed!</h2>
+              </div><br>
+            </div>
+
+            <button type="submit"  [disabled]="!myForm.valid" (click)=calculateInsurance(area1.value)>Calculate</button>
+            <button type="reset">Reset</button>
+          </div>
+          <div *ngIf="showTable" style="display: flex;justify-content: center;">
+            <div style="width: 85%;display: flex;justify-content: center;">
+              <table>
+
+                <tr>
+                  <th>Insurance Company</th>
+                  <th>Sum Insured (per Hectare)</th>
+                  <th>Premium Amount </th>
+                  <th>Crop Name </th>
+                  <th>Crop Type</th>
+                  <th>Area</th>
+                  <th>Total Sum insured</th>
+                </tr>
+                <tr>
+                  <td>{{calculateInsur.insuranceCompanyName}}</td>
+                  <td>{{calculateInsur.sumInsured}}</td>
+                  <td>{{calculateInsur.premiumAmount}}</td>
+                  <td>{{calculateInsur.cropName}}</td>
+                  <td>{{calculateInsur.cropType}}</td>
+                  <td>{{calculateInsur.area}}</td>
+                  <td>{{calculateInsur.totalSumInsured}}</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="container">
+            <button type="submit"  (click)=applyInsurance()>Apply</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="loaderc">
+    <div class="loader-wrapper">
+      <div class="loader"></div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+
+</body>
+</html>

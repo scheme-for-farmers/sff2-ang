@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+  <title>FARMARKET</title>
+  <link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet">
+ 
+</head>
+ 
+<body>
+ 
+  <app-farmer-header></app-farmer-header>
+ 
+  <div class="row">
+    <div class="main" style="display: flex;justify-content: center;">
+      <div class="card" style="width: 100%;">
+        <h1 style="text-align: center;">Place Sell Request</h1>
+       <h2 *ngIf=flag style="display: flex;justify-content: center;color:rgb(165, 255, 130);"> {{msg}} </h2>
+        <!--<form onsubmit="validate();">-->
+        <form #myForm="ngForm" >
+          <!-- {{insuranceApplied}} -->
+ 
+          <div class="container" style="display: flex;justify-content: center;width:100%;">
+            <table style="width:100%;">
+              <tr> 
+                <th>Crop Name</th>
+                <th>CropType</th>
+                <th>BasePrice</th>
+                <th>Quantity</th>
+                <th>Apply For Insurance</th>
+                <th>Place Request</th>
+              </tr>
+              <tr *ngFor="let crop of crops; let index as i;">
+                <td >{{crop.cropName}}</td>
+                <td >{{crop.cropType}}</td>
+                <td>{{crop.basePrice}}</td>
+                <td> <input type="number" #quantity name="quantity" style="height: 50px;text-align: center;font-size: 20px;max-width: 50%;" ngModel required></td>
+                <td> <input type="checkbox"  id="insure" (click)="insuranceApplied(crop)" style="height: 25px;text-align: center;font-size: 45px;min-width: 30px;" />select</td>
+                <td style="padding: 20px;"><button type="submit" (click)=placeSellRequest(crop,quantity.value) style="font-size: 20px;border-radius: 30px;min-width: 150px;" >Place Request</button></td>
+                
+ 
+              </tr>
+            </table>
+            
+ 
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="loaderc">
+    <div class="loader-wrapper">
+      <div class="loader"></div>
+    </div>
+  </div>
+  
+</body>
+
+</html>
